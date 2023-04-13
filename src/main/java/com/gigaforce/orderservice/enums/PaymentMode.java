@@ -1,4 +1,4 @@
-package com.gigaforce.orderservice;
+package com.gigaforce.orderservice.enums;
 
 public enum PaymentMode {
     CASH,

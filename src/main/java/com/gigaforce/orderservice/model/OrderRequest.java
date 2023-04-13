@@ -1,6 +1,6 @@
 package com.gigaforce.orderservice.model;
 
-import com.gigaforce.orderservice.PaymentMode;
+import com.gigaforce.orderservice.enums.PaymentMode;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

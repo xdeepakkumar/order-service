@@ -1,6 +1,7 @@
 package com.gigaforce.orderservice.service;
 
 import com.gigaforce.orderservice.entity.Order;
+import com.gigaforce.orderservice.external.client.ProductService;
 import com.gigaforce.orderservice.model.OrderRequest;
 import com.gigaforce.orderservice.repository.OrderRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +17,18 @@ public class OrderServiceImpl implements OrderService{
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private ProductService productService;
+
     @Override
     public Long placeOrder (OrderRequest orderRequest) {
         /* placing the order **/
         log.info("placing the order request : {}", orderRequest);
+
+        productService.reduceQuantity(orderRequest.getProductId(), orderRequest.getQuantity());
+
+        log.info("Creating order with status : CREATED");
+
         Order order = Order.builder()
                 .amount(orderRequest.getTotalAmount())
                 .orderStatus("CREATED")
