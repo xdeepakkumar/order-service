@@ -14,6 +14,22 @@ spring:
   config:
     import: configserver:http://localhost:9296
 
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://dev-13132985.okta.com/oauth2/default
+      client:
+        registration:
+          internal-client:
+            provider: okta
+            authorization-grant-type: client_credentials
+            scope: internal
+            client-id: 0oa94x9can7q8xQKZ5d7
+            client-secret: dSzXvNdil15DMoLN_ziBWGr90tY3lTFWPPKDSwLu
+        provider:
+          okta:
+            issuer-uri: https://dev-13132985.okta.com/oauth2/default
   jpa:
     hibernate:
       ddl-auto: update
