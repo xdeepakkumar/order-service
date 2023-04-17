@@ -84,7 +84,6 @@ public class OrderServiceImpl implements OrderService {
                 restTemplate.getForObject("http://PAYMENT-SERVICE/payment/order/" + order.getId(),
                                           PaymentResponse.class);
 
-
         OrderResponse.PaymentDetails paymentDetails =
                 OrderResponse.PaymentDetails.builder().paymentId(paymentResponse.getPaymentId())
                         .paymentDate(paymentResponse.getPaymentDate()).orderId(paymentResponse.getOrderId())
